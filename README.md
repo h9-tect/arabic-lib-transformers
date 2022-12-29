@@ -2,7 +2,7 @@
 Introduction
 The ArabicProcessingLibrary is a Python library that allows users to perform various natural language processing tasks in Arabic, such as translation, text classification, question answering, summarization, text generation, and more. It uses the transformers library to access pre-trained language models and the pyarabic library to process Arabic text.
 
-##Dependencies
+## Dependencies
 In order to use the ArabicProcessingLibrary, you will need to install the following dependencies:
 
 transformers: a library for natural language processing tasks using transformer-based models.
@@ -20,3 +20,9 @@ pip install transformers nltk pyarabic torch csv sentencepiece
 
 ## Usage
 To use the ArabicProcessingLibrary, you will need to import it and create an instance of the ArabicProcessingLibrary class. You will also need to specify a model name, which can be any pre-trained language model from the transformers library.
+```python
+import ArabicProcessingLibrary
+
+# Create an instance of the ArabicProcessingLibrary
+arabic_library = ArabicProcessingLibrary("bert-base-arabic")
+```
