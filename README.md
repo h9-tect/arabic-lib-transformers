@@ -95,3 +95,25 @@ For example, if you want to fine-tune a BERT model for 3 epochs with a batch siz
 ```python
 library.fine_tune(train_dataset, val_dataset, 3, 32, 0.001, "bert")
 ```
+### create_csv_dataset
+The create_csv_dataset function is used to create a dataset object from a CSV file. The CSV file should contain rows of text and labels, with the text in the first column and the label in the second column.
+
+To use the create_csv_dataset function, you will need to pass in the following arguments:
+
+* file_path: The path to the CSV file.
+* tokenizer: A transformer model's tokenizer object, which can be used to tokenize the text in the CSV file.
+* max_length: The maximum length of the tokenized text. Any text that exceeds this length will be truncated.
+Here is an example of how to use the create_csv_dataset function:
+```python
+# Load a transformer model and its tokenizer
+model = BertModel.from_pretrained('bert-base-cased')
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+
+# Create a dataset object from a CSV file
+dataset = create_csv_dataset('data.csv', tokenizer, max_length=128)
+
+# Iterate over the dataset and print the text and label for each example
+for input_tensor, label_tensor in dataset:
+    print(input_tensor)
+    print(label_tensor)
+```
