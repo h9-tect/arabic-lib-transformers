@@ -73,3 +73,25 @@ summary = arabic_processor.summarize(text)
 
 print(summary)
 ```
+## fine-tune
+To fine-tune a transformer model on an Arabic dataset, you will need to follow the same steps as you would for any other language. Here are the steps you can follow:
+
+Load the transformer model: You can use the BertForMaskedLM or GPT2LMHeadModel classes from the transformers library to load the pretrained BERT or GPT-2 model, respectively.
+Set up the optimizer and criterion: You can use the Adam optimizer and the CrossEntropyLoss criterion from the torch library to optimize the model and compute the loss, respectively.
+Train the model: In each epoch, you can iterate through the training dataset and use the model, optimizer, and criterion to train the model. You can also compute the training loss for each epoch.
+Evaluate the model: In each epoch, you can also iterate through the validation dataset and use the model and criterion to evaluate the model. You can compute the validation loss and accuracy for each epoch.
+Print the results: You can print the training loss, validation loss, and validation accuracy for each epoch to monitor the model's progress.
+You may also need to handle the input and output text in Arabic. To do this, you will need to use an Arabic tokenizer and convert the input text to a tensor of token IDs, and the output labels to a tensor of integers. You can use the BertTokenizer class from the transformers library to tokenize the Arabic text, and the convert_tokens_to_ids and convert_ids_to_tokens methods to convert the tokens to/from token IDs.
+To use the fine-tune function through the Arabic Processing Library, you will first need to create an instance of the library, passing in the name of the transformer model you want to use as an argument:
+```python
+library = ArabicProcessingLibrary("bert-base-arabic")
+```
+Then, you can call the fine-tune function on the library instance, passing in the training and validation datasets, the number of epochs, the batch size, the learning rate, and the model type as arguments:
+```python
+library.fine_tune(train_dataset, val_dataset, epochs, batch_size, learning_rate, model_type)
+```
+For example, if you want to fine-tune a BERT model for 3 epochs with a batch size of 32 and a learning rate of 0.001, you could do the following:
+
+```python
+library.fine_tune(train_dataset, val_dataset, 3, 32, 0.001, "bert")
+```
