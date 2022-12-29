@@ -21,9 +21,7 @@ pip install transformers nltk pyarabic torch csv sentencepiece
 ## Usage
 To use the Sarsor, you will need to import it and create an instance of the Sarsor class. You will also need to specify a model name, which can be any pre-trained language model from the transformers library.
 you can use it from 
-```sh
-pip install -i https://test.pypi.org/simple/ Sarsor==0.1
-```
+
 
 ```python
 import Sarsor
