@@ -92,6 +92,62 @@ class ArabicProcessingLibrary:
         return classification[0]['label']  
     
 
+    def fine_tune(self, train_dataset, val_dataset, epochs, batch_size, learning_rate, model_type):
+
+    # """Fine-tunes a transformer model on the given datasets.
+    
+    # Args:
+    #     train_dataset: A Dataset object for the training data.
+    #     val_dataset: A Dataset object for the validation data.
+    #     epochs: The number of epochs to train for.
+    #     batch_size: The batch size to use for training.
+    #     learning_rate: The learning rate to use for training.
+    #     model_type: The type of transformer model to use (e.g. "bert", "gpt2").
+    # """
+    # Load the transformer model
+      model = model_type
+      if model_type == "bert":
+
+        model = BertForMaskedLM.from_pretrained(self.model_name)
+      elif model_type == "gpt2":
+        model = GPT2LMHeadModel.from_pretrained(self.model_name)
+      else:
+        raise ValueError("Unrecognized model type: {}".format(model_type))
+
+    # Set up the optimizer and criterion
+      optimizer = Adam(model.parameters(), lr=learning_rate)
+      criterion = nn.CrossEntropyLoss()
+
+    # Train the model
+      for epoch in range(epochs):
+
+        model.train()
+        train_loss = 0
+        for input_tensor, label_tensor in train_dataset:
+            optimizer.zero_grad()
+            output = model(input_tensor)
+            loss = criterion(output, label_tensor)
+            loss.backward()
+            optimizer.step()
+            train_loss += loss.item()
+        train_loss /= len(train_dataset)
+
+        model.eval()
+        val_loss = 0
+        correct = 0
+        with torch.no_grad():
+            for input_tensor, label_tensor in val_dataset:
+                output = model(input_tensor)
+                val_loss += criterion(output, label_tensor).item()
+                pred = output.argmax(dim=1, keepdim=True)
+                correct += pred.eq(label_tensor.view_as(pred)).sum().item()
+        val_loss /= len(val_dataset)
+        accuracy = correct / len(val_dataset)
+
+        print("Epoch {}: train loss = {:.3f}, val loss = {:.3f}, val accuracy = {:.3f}".format(
+            epoch, train_loss, val_loss, accuracy))
+
+
   
     def evaluate(self, dataset=None):
 
