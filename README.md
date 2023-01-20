@@ -22,7 +22,7 @@ you can use it from
 import arabicTransformers
 
 # Create an instance of the arabicTransformers
-arabic_library = arabicTransformers("bert-base-arabic")
+arabic_library = arabicTransformers("model_name")
 ```
 ### Here are some examples of how you can use the various methods in the arabicTransformers:
 
@@ -53,7 +53,7 @@ The text-generation pipeline of the arabicTransformers is a method that allows y
 
 To use the text-generation pipeline, you can call the generate method of the arabicTransformers object and pass in the prompt as an argument. For example:
 ```python
-library = arabicTransformers('bert-base-arabic')
+library = arabicTransformers('model_name')
 generated_text = library.generate('أهلاً بك في العالم العربي')
 print(generated_text)
 ```
@@ -61,7 +61,7 @@ The summarization function of the arabicTransformers is a method that takes in a
 
 ```python
 # Initialize the arabicTransformers with a particular model
-arabic_processor = arabicTransformers(model_name='bert-base-arabic')
+arabic_processor = arabicTransformers(model_name='model_name')
 
 # Input text
 text = "عندما يتم التعامل مع النص العربي، فإن المعالجة اللغوية هي مهمة هامة في تحليل النص. وتتضمن هذه المهمة العديد من الإجراءات التي تساعد في تحليل العبارات والجمل وتحديد المعاني الخاصة بها. كما يتم استخدام معالجة اللغة العربية للتعرف على النص المراد تحليله وتصنيفه وترجمته إلى لغة أخرى."
