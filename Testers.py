@@ -1,5 +1,4 @@
-from arabic_lib import arabicTransformers #1- Since the code is not a pip package, `import Sarsor` is not enough.
-
+from arabic_lib import arabicTransformers 
 print("# Translation from English to Arabic:")
 model = arabicTransformers("anibahug/marian-finetuned-kde4-en-to-ar") 
 translated_text = arabicTransformers.translation(model, "Hello, how are you?") #2- You still need to call the model (the Class Constructor) here too.
