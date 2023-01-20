@@ -5,21 +5,16 @@ The arabicTransformers is a Python library that allows users to perform various 
 ## Dependencies
 In order to use the arabicTransformers, you will need to install the following dependencies:
 
-* transformers: a library for natural language processing tasks using transformer-based models.
-* nltk: a library for natural language processing tasks.
-* pyarabic: a library for processing Arabic text.
+* transformers: a library for natural language processing tasks using transformer-based models..
 * torch: a library for deep learning tasks.
 * csv: a library for reading and writing CSV files.
-* sentencepiece: a library for text tokenization.
-Installation
 To install the arabicTransformers, you can use pip:
 
 ```sh
-pip install transformers nltk pyarabic torch csv sentencepiece
-```
+pip install transformers  csv 
 
 ## Usage
-To use the Sarsor, you will need to import it and create an instance of the arabicTransformers class. You will also need to specify a model name, which can be any pre-trained language model from the transformers library.
+To use the arabicTransformers, you will need to import it and create an instance of the arabicTransformers class. You will also need to specify a model name, which can be any pre-trained language model from the transformers library.
 you can use it from 
 
 
@@ -76,7 +71,7 @@ summary = arabicTransformers.summarize(text)
 
 print(summary)
 ```
-```
+
 ### create_csv_dataset
 The create_csv_dataset function is used to create a dataset object from a CSV file. The CSV file should contain rows of text and labels, with the text in the first column and the label in the second column.
 
@@ -99,3 +94,5 @@ for input_tensor, label_tensor in dataset:
     print(input_tensor)
     print(label_tensor)
 ```
+
+if you want tp check it you can see Tester.py 
