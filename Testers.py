@@ -10,7 +10,6 @@ model = arabicTransformers("Patt/fine-tuned_ar-en")
 translated_text = arabicTransformers.translation(model, "أهلا، كيف حالك؟") #You need to call the model (the Class Constructor).
 print(translated_text, '\n\n')
 
-
 print("# English Masked Language Modeling:")
 model = arabicTransformers("xlm-roberta-large")
 masked_text = arabicTransformers.fill_mask(model, "Hello, I'm a <mask> model.") #You need to call the model (the Class Constructor).
@@ -21,7 +20,6 @@ model = arabicTransformers("CAMeL-Lab/bert-base-arabic-camelbert-mix")
 masked_text = arabicTransformers.fill_mask(model, "اللغة العربية هي لغة [MASK].") #You need to call the model (the Class Constructor).
 print(masked_text, '\n\n')
 
-
 print("# English Token Classification (Named Entity Recognition):")
 model = arabicTransformers('Jean-Baptiste/roberta-large-ner-english')
 ner_text = arabicTransformers.token_classification(model, "My name is Ali and I live in Dubai") #You need to call the model (the Class Constructor).
@@ -31,7 +29,6 @@ print("# Arabic Token Classification (Part-of-Speech Tagging):")
 model = arabicTransformers('CAMeL-Lab/bert-base-arabic-camelbert-mix-pos-msa')
 pos_text = arabicTransformers.token_classification(model, "إمارة أبوظبي هي إحدى إمارات دولة الإمارات العربية المتحدة السبع") #You need to call the model (the Class Constructor).
 print(pos_text, '\n\n')
-
 
 print("# English Question Answering:")
 model = arabicTransformers('distilbert-base-cased-distilled-squad')
@@ -46,7 +43,6 @@ question="ما اسمي؟"
 context = "اسمي سعيد وأسكن في الرياض."
 result = arabicTransformers.question_answering(model, question=question, context=context) #You need to call the model (the Class Constructor).
 print(result, '\n\n')
-
 
 print("# English Summarization:")
 model = arabicTransformers("philschmid/bart-large-cnn-samsum")
@@ -71,7 +67,6 @@ text = '''شهدت مدينة طرابلس، مساء أمس الأربعاء،
 summarized_text = arabicTransformers.summarization(model, text=text) #You need to call the model (the Class Constructor).
 print(summarized_text, '\n\n')
 
-
 print("# English Text Classification (Sentiment Analysis):")
 model = arabicTransformers('distilbert-base-uncased-finetuned-sst-2-english') 
 text_classified = arabicTransformers.text_classification(model, "I like you. I love you.") #You need to call the model (the Class Constructor).
@@ -81,7 +76,6 @@ print("# Arabic Text Classification (Arabic Dialect Identification):")
 model = arabicTransformers('Ammar-alhaj-ali/arabic-MARBERT-dialect-identification-city') 
 text_classified = arabicTransformers.text_classification(model,"كل عام وانت طيب يا باشا") #You need to call the model (the Class Constructor).
 print(text_classified, '\n\n')
-
 
 print("# English Text Generation:")
 model = arabicTransformers('gpt2') 
