@@ -2,5 +2,4 @@ transformers
 nltk
 pyarabic
 torch
-csv
 sentencepiece
