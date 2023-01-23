@@ -1,4 +1,4 @@
-# arabic-lib-transformers
+# arabicTransformers
 Introduction
 The arabicTransformers is a Python library that allows users to perform various natural language processing tasks in Arabic, such as translation, text classification, question answering, summarization, text generation, and more. It uses the transformers library to access pre-trained language models and the pyarabic library to process Arabic text.
 
@@ -28,14 +28,17 @@ arabic_library = arabicTransformers("model_name")
 
 #### Translation
 To translate a piece of text from English to Arabic, you can use the translate method:
+
 ```python
 # Translate a piece of text from English to Arabic
 arabic_text = arabicTransformers.translate("Hello, how are you?")
 print(arabic_text)
 ```
+
 The question_answering method is a function of the arabicTransformers class that takes in two arguments: question and context. It uses a pre-trained question answering model to find the answer to the question in the provided context. The method returns the found answer as a string.
 
 Here is an example of how to use the question_answering method:
+
 ```python
 # Initialize the arabicTransformers with a specified model name
 arabic_processing_library = arabicTransformers("model_name")
@@ -49,15 +52,19 @@ answer = arabicTransformers.question_answering(question, context)
 
 print(answer)  # Output: "مدينة الرياض"
 ```
+
 The text-generation pipeline of the arabicTransformers is a method that allows you to generate text based on a provided prompt. This can be useful for tasks such as chatbots, language translation, and text summarization.
 
 To use the text-generation pipeline, you can call the generate method of the arabicTransformers object and pass in the prompt as an argument. For example:
+
 ```python
 library = arabicTransformers('model_name')
 generated_text = library.generate('أهلاً بك في العالم العربي')
 print(generated_text)
 ```
+
 The summarization function of the arabicTransformers is a method that takes in a piece of text as an input and returns a summary of the text. Here is an example of how you can use this function:
+
 
 ```python
 # Initialize the arabicTransformers with a particular model
@@ -81,6 +88,7 @@ To use the create_csv_dataset function, you will need to pass in the following a
 * tokenizer: A transformer model's tokenizer object, which can be used to tokenize the text in the CSV file.
 * max_length: The maximum length of the tokenized text. Any text that exceeds this length will be truncated.
 Here is an example of how to use the create_csv_dataset function:
+
 ```python
 # Load a transformer model and its tokenizer
 model = BertModel.from_pretrained('bert-base-cased')
