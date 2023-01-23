@@ -103,4 +103,4 @@ for input_tensor, label_tensor in dataset:
     print(label_tensor)
 ```
 
-if you want tp check it you can see Tester.py 
+\* If you want to check all the functions out, you can run this script: [Testers.py](Testers.py)
