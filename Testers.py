@@ -74,12 +74,12 @@ print(summarized_text, '\n\n')
 
 print("# English Text Classification (Sentiment Analysis):")
 model = arabicTransformers('distilbert-base-uncased-finetuned-sst-2-english') 
-text_classified = Sarsor.text_classification(model, "I like you. I love you.") #You need to call the model (the Class Constructor).
+text_classified = arabicTransformers.text_classification(model, "I like you. I love you.") #You need to call the model (the Class Constructor).
 print(text_classified, '\n')
 
 print("# Arabic Text Classification (Arabic Dialect Identification):")
 model = arabicTransformers('Ammar-alhaj-ali/arabic-MARBERT-dialect-identification-city') 
-text_classified = Sarsor.text_classification(model,"كل عام وانت طيب يا باشا") #You need to call the model (the Class Constructor).
+text_classified = arabicTransformers.text_classification(model,"كل عام وانت طيب يا باشا") #You need to call the model (the Class Constructor).
 print(text_classified, '\n\n')
 
 
