@@ -78,6 +78,15 @@ summary = arabicTransformers.summarize(text)
 
 print(summary)
 ```
+###Text similarity
+
+```
+at = arabicTransformers("symanto/sn-xlm-roberta-base-snli-mnli-anli-xnli")
+text1 = "أحب مصر في الصيف"
+text2 = "أحب الرياض في  الشتاء"
+score = at.text_similarity(text1, text2)
+print("Similarity Score:", score)
+```
 
 ### create_csv_dataset
 The create_csv_dataset function is used to create a dataset object from a CSV file. The CSV file should contain rows of text and labels, with the text in the first column and the label in the second column.
