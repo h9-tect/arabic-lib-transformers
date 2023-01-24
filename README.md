@@ -80,7 +80,7 @@ print(summary)
 ```
 ###Text similarity
 
-```
+```python
 at = arabicTransformers("symanto/sn-xlm-roberta-base-snli-mnli-anli-xnli")
 text1 = "أحب مصر في الصيف"
 text2 = "أحب الرياض في  الشتاء"
