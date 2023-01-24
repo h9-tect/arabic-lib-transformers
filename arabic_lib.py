@@ -42,6 +42,14 @@ class arabicTransformers:
         tensors = [torch.from_numpy(e) for e in embeddings]
         score = cosine_similarity(tensors[0], tensors[1], dim=0)
         return score
+        
+    def sentiment_analysis(self, text):
+        sentiment_analyzer = pipeline("sentiment-analysis", model=self.model_name)
+        return sentiment_analyzer(text)
+
+    def named_entity_recognition(self, text):
+        ner = pipeline("ner", model=self.model_name)
+        return ner(text)
 
 
  
