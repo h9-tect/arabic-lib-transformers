@@ -1,10 +1,13 @@
 import torch
 import csv
 from transformers import pipeline
+from torch.nn.functional import cosine_similarity
+from sentence_transformers import SentenceTransformer
 
 class arabicTransformers:
     def __init__(self, model_name):
         self.model_name = model_name
+        self.model = SentenceTransformer(model_name)
         
     def translation(self, text):
         translator = pipeline("translation", model=self.model_name)
@@ -33,7 +36,15 @@ class arabicTransformers:
     def text_classification(self, text):
         text_classifier = pipeline('text-classification', model=self.model_name) 
         return text_classifier(text)
-    
+   
+    def text_similarity(self, text1, text2):
+        embeddings = self.model.encode([text1, text2])
+        tensors = [torch.from_numpy(e) for e in embeddings]
+        score = cosine_similarity(tensors[0], tensors[1], dim=0)
+        return score
+
+
+ 
     @staticmethod
     def create_csv_dataset(file_path, tokenizer, max_length):
         """Creates a dataset from a CSV file."""
