@@ -86,3 +86,11 @@ print("# Arabic Text Generation:")
 model = arabicTransformers('aubmindlab/aragpt2-base') 
 text_generated = arabicTransformers.text_generation(model, "القدس مدينة تاريخية، بناها الكنعانيون في") #You need to call the model (the Class Constructor).
 print(text_generated, '\n\n')
+
+print("# Arabic Text similarity:")
+
+at = arabicTransformers("symanto/sn-xlm-roberta-base-snli-mnli-anli-xnli")
+text1 = "أحب مصر في الصيف"
+text2 = "أحب الرياض في  الشتاء"
+score = at.text_similarity(text1, text2)
+print("Similarity Score:", score)
