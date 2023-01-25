@@ -78,7 +78,7 @@ summary = arabicTransformers.summarize(text)
 
 print(summary)
 ```
-###Text similarity
+### Text similarity
 
 ```python
 at = arabicTransformers("symanto/sn-xlm-roberta-base-snli-mnli-anli-xnli")
