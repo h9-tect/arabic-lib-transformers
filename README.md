@@ -11,7 +11,7 @@ In order to use the arabicTransformers, you will need to install the following d
 To install the arabicTransformers, you can use pip:
 
 ```sh
-pip install transformers 
+pip install -r requirements.txt 
 ```
 ## Usage
 To use the arabicTransformers, you will need to import it and create an instance of the arabicTransformers class. You will also need to specify a model name, which can be any pre-trained language model from the transformers library.
