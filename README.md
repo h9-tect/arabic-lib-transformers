@@ -19,7 +19,7 @@ you can use it from
 
 
 ```python
-import arabicTransformers
+from arabicTransformers import * 
 
 # Create an instance of the arabicTransformers
 arabic_library = arabicTransformers("model_name")
