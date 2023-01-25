@@ -88,7 +88,6 @@ text_generated = arabicTransformers.text_generation(model, "القدس مدين�
 print(text_generated, '\n\n')
 
 print("# Arabic Text similarity:")
-
 at = arabicTransformers("symanto/sn-xlm-roberta-base-snli-mnli-anli-xnli")
 text1 = "أحب مصر في الصيف"
 text2 = "أحب الرياض في  الشتاء"
