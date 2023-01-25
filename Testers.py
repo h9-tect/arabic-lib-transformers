@@ -1,4 +1,4 @@
-from arabic_lib import arabicTransformers
+from arabicTransformers import *
 
 print("# Translation from English to Arabic:")
 model = arabicTransformers("anibahug/marian-finetuned-kde4-en-to-ar") 
