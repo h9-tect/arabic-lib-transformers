@@ -52,7 +52,6 @@ class arabicTransformers:
         return ner(text)
 
 
- 
     @staticmethod
     def create_csv_dataset(file_path, tokenizer, max_length):
         """Creates a dataset from a CSV file."""
