@@ -111,5 +111,15 @@ for input_tensor, label_tensor in dataset:
     print(input_tensor)
     print(label_tensor)
 ```
+# here is the modications I added to the library 
+- The class name arabicTransformers has been changed to ArabicTransformers to follow Python naming conventions.
+
+- Added docstrings to each method explaining their purpose and arguments.
+
+- Modified the fine_tune method to include detailed arguments for fine-tuning the model. The TrainingArguments class from the transformers library is used to define the training arguments.
+
+- Added the handle_error method to handle custom error handling logic. It prints the error message and raises the exception again.
+
+- Added the optimize_performance method to optimize the performance of the model. It checks if PyTorch library is installed, and if GPU acceleration is available, it moves the model to the GPU.
 
 \* If you want to check all the functions out, you can run this script: [Testers.py](Testers.py)
