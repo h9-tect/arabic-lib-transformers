@@ -3,16 +3,17 @@ import csv
 from transformers import pipeline
 from torch.nn.functional import cosine_similarity
 from sentence_transformers import SentenceTransformer
+from transformers import Trainer, TrainingArguments
 
-class arabicTransformers:
+class ArabicTransformers:
     def __init__(self, model_name):
         self.model_name = model_name
         self.model = SentenceTransformer(model_name)
         
-    def translation(self, text):
+    def translation(self, text, target_language='en', source_language='auto'):
         translator = pipeline("translation", model=self.model_name)
-        return translator(text)
-
+        return translator(text, target_lang=target_language, source_lang=source_language)
+    
     def fill_mask(self, text):
         unmasker = pipeline("fill-mask", model=self.model_name)
         return unmasker(text) 
@@ -51,9 +52,7 @@ class arabicTransformers:
         ner = pipeline("ner", model=self.model_name)
         return ner(text)
 
-
-    @staticmethod
-    def create_csv_dataset(file_path, tokenizer, max_length):
+    def create_csv_dataset(self, file_path, tokenizer, max_length):
         """Creates a dataset from a CSV file."""
         data = []
 
@@ -87,4 +86,75 @@ class arabicTransformers:
             """Returns the length of the dataset."""
             return len(data)
 
-       
+        return iterate, __len__
+
+    def fine_tune(self, train_dataset, validation_dataset, optimizer="AdamW", learning_rate=2e-5, num_train_epochs=3, warmup_steps=500, weight_decay=0.01, logging_dir=None, logging_steps=500, save_strategy="epoch", save_steps=1000):
+        """
+        Fine-tunes the model with the provided train_dataset and validates with validation_dataset.
+        
+        Args:
+            train_dataset (Dataset): The training dataset.
+            validation_dataset (Dataset): The validation dataset.
+            optimizer (str or Optimizer): The optimizer to use during fine-tuning. Default: "AdamW".
+            learning_rate (float): The learning rate for the optimizer. Default: 2e-5.
+            num_train_epochs (int): The number of training epochs. Default: 3.
+            warmup_steps (int): The number of warmup steps. Default: 500.
+            weight_decay (float): The weight decay rate for the optimizer. Default: 0.01.
+            logging_dir (str): The directory to save training logs. Default: None.
+            logging_steps (int): The number of steps between each logging. Default: 500.
+            save_strategy (str): The saving strategy. Default: "epoch".
+            save_steps (int): The number of steps between each model save. Default: 1000.
+        """
+        model = SentenceTransformer(self.model_name)
+        
+        training_args = TrainingArguments(
+            output_dir="fine_tuned_model",
+            evaluation_strategy="steps",
+            eval_steps=logging_steps,
+            logging_dir=logging_dir,
+            logging_steps=logging_steps,
+            save_strategy=save_strategy,
+            save_steps=save_steps,
+            learning_rate=learning_rate,
+            num_train_epochs=num_train_epochs,
+            warmup_steps=warmup_steps,
+            weight_decay=weight_decay,
+        )
+        
+        trainer = Trainer(
+            model=model,
+            args=training_args,
+            train_dataset=train_dataset,
+            eval_dataset=validation_dataset,
+            optimizers=optimizer
+        )
+        
+        trainer.train()
+
+    def handle_error(self, error):
+        """
+        Custom error handling logic.
+        
+        Args:
+            error (Exception): The error or exception to handle.
+        """
+        # Custom error handling logic
+        # You can modify this method to handle specific types of errors or exceptions
+        
+        # Example: Print the error message and raise the exception again
+        print("An error occurred:", str(error))
+        raise error
+
+    def optimize_performance(self):
+        """
+        Optimizes the performance of the model.
+        You can include techniques like model quantization, compression, or GPU acceleration.
+        """
+        try:
+            import torch
+        except ImportError as e:
+            raise ImportError("PyTorch library is not installed. Please install it with `pip install torch`.")
+
+        # Enable GPU acceleration if available
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model.to(device)
