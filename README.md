@@ -111,7 +111,7 @@ for input_tensor, label_tensor in dataset:
     print(input_tensor)
     print(label_tensor)
 ```
-# here is the modications I added to the library 
+# here is the modifications I added to the library 
 - The class name arabicTransformers has been changed to ArabicTransformers to follow Python naming conventions.
 
 - Added docstrings to each method explaining their purpose and arguments.
