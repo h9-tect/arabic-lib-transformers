@@ -1,4 +1,4 @@
-# arabicTransformers
+# ArabicTransformers
 Introduction
 The arabicTransformers is a Python library that allows users to perform various natural language processing tasks in Arabic, such as translation, text classification, question answering, summarization, text generation, and more. It uses the transformers library to access pre-trained language models and the pyarabic library to process Arabic text.
 
